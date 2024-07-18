@@ -3,7 +3,7 @@
 }
 
 .background {
-  background: linear-gradient(to bottom, #6aadec, #ffffff);
+  background: linear-gradient(to bottom, #589ad8, #ffffff);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -15,7 +15,7 @@
 
 <!--마우스 이동 이벤트-->
 .snowfall {
-  position: relative;
+  position: fixed;
   width: 100%;
   height: 100vh;
   overflow: hidden;
@@ -26,8 +26,8 @@
 
 .flake {
   position: absolute;
-  width: 5px;
-  height: 5px;
+  width: 7px;
+  height: 7px;
   background: white;
   border-radius: 50%;
   pointer-events: none;

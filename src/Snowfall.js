@@ -9,14 +9,18 @@ const Snowfall = () => {
         const id = Math.random().toString(36).substring(7);
         const newFlake = { id, x, y, fallSpeed: Math.random() * 5 + 2, opacity: Math.random() };
         console.log('Creating flake:', newFlake);
-        setFlakes((flakes) => [...flakes, newFlake]);
-      }, []);
+        setFlakes((flakes) => {
+            const updatedFlakes = [...flakes, newFlake];
+            return updatedFlakes;
+          });
+        }, []);
 
+    //마우스 이동 이벤트
     const handleMouseMove = (e) => {
-        console.log(`Mouse moved: (${e.clientX}, ${e.clientY})`);
         createFlake(e.clientX, e.clientY);
     };
 
+    //눈송이 위치 업데이트
     useEffect(() => {
         const interval = setInterval(() => {
             setFlakes((flakes) => {
@@ -26,13 +30,21 @@ const Snowfall = () => {
                     ...flake,
                     y: flake.y + flake.fallSpeed,
                 }))
-                .filter((flake) => flake.y < window.innerHeight);
+                .filter((flake) => flake.y < window.innerHeight - 20);
                 return updatedFlaked;
 
             });
         }, 50);
         return () => clearInterval(interval);
     }, []);
+
+    //이벤트 리스너 document에 바인딩
+    useEffect(() => {
+        document.addEventListener('mousemove', handleMouseMove);
+        return () => {
+            document.removeEventListener('mousemove', handleMouseMove);
+        };
+    }, [handleMouseMove]);
 
     return(
         <div className="snowfall" onMouseMove={handleMouseMove}>
