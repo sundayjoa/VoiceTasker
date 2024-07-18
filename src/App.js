@@ -1,8 +1,8 @@
-import logo from './logo.svg';
 import './App.css';
 import Todo from './Todo';
 import AddTodo from './AddTodo';
 import Snowfall from './Snowfall';
+import Logo from './Logo';
 import React, {useState} from "react";
 import {Container, List, Paper} from "@mui/material";
 
@@ -22,7 +22,7 @@ function App() {
 
 let todoItems =
   items.length > 0 && (
-    <Paper style={{margin: 16}}>
+    <Paper style={{margin: 15}}>
       <List>
         {items.map((item) =>(
           <Todo item={item} key={item.id} />
@@ -31,13 +31,22 @@ let todoItems =
     </Paper>
   );
 
-  return <div className="background">
+  return (
+    <>
+      <div className="index-background">
+      <div className="logo-background">
+          <Logo />
+          </div>
+        <div className="background">
         <Snowfall />
         <Container maxWidth="md">
           <AddTodo />
-          <div className="TodoList">{todoItems}</div>
+          <div>{todoItems}</div>
         </Container>
-     </div>;
+      </div>
+      </div>
+     </>
+     );
 }
 
 export default App;

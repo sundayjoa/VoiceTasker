@@ -8,7 +8,6 @@ const Snowfall = () => {
     const createFlake = useCallback((x, y) => {
         const id = Math.random().toString(36).substring(7);
         const newFlake = { id, x, y, fallSpeed: Math.random() * 5 + 2, opacity: Math.random() };
-        console.log('Creating flake:', newFlake);
         setFlakes((flakes) => {
             const updatedFlakes = [...flakes, newFlake];
             return updatedFlakes;

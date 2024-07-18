@@ -2,18 +2,30 @@
   text-align: center;
 }
 
-.background {
+.index-background {
   background: linear-gradient(to bottom, #589ad8, #ffffff);
   min-height: 100vh;
+}
+
+.logo-background {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30vh;
+  color: white;
+}
+
+.background {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  height: 70vh;
   font-size: calc(10px + 2vmin);
   color: white;
 }
 
-<!--마우스 이동 이벤트-->
+/*마우스 이동 이벤트*/
 .snowfall {
   position: fixed;
   width: 100%;
@@ -33,26 +45,36 @@
   pointer-events: none;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
+/*로고*/
+@keyframes logo-spin {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
   }
+}
+
+.spin {
+  font-size: 120px !important;
+  cursor: pointer;
+  animation: logo-spin 10s linear infinite;
+}
+
+.logo-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.logo-title {
+  font-size: 80px;
+  font-weight: bold;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.logo-container:hover, .logo-title {
+  opacity: 1;
 }
