@@ -24,12 +24,17 @@ function App() {
     setItems([...newItems]);
   }
 
+  //리스트 수정
+  const editItem = () => {
+    setItems([...items]);
+  };
+
 let todoItems =
   items.length > 0 && (
     <Paper style={{margin: 15}}>
       <List>
         {items.map((item) =>(
-          <Todo item={item} key={item.id} deleteItem = {deleteItem} />
+          <Todo item={item} key={item.id} editItem={editItem} deleteItem = {deleteItem} />
         ))}
       </List>
     </Paper>

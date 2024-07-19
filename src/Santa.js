@@ -6,6 +6,7 @@ import './App.css'
 const Santa = () => {
     const [direction, setDirection] = useState('rightToLeft');
     const [fallingGifts, setFallingGifts] = useState([]);
+    const [selectedGift, setSelectedGift] = useState(null);
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -35,7 +36,16 @@ const Santa = () => {
           clearInterval(giftInterval);
           clearInterval(cleanupInterval);
         };
-      }, []);
+    }, []);
+
+    //선물 클릭하면 운세 팝업창 뜨게 하기
+    const handleGiftClick = (gift) => {
+        setSelectedGift(gift);
+    };
+
+    const handleClosePopup = () => {
+        setSelectedGift(null);
+    };
     
 
 
@@ -63,8 +73,19 @@ const Santa = () => {
               animationDuration: gift.animationDuration,
               animationDelay: gift.animationDelay,
             }}
+            onClick = {() => handleGiftClick(gift)}
           />
         ))}
+        {selectedGift &&(
+            <>
+            <div className="popup-overlay" onClick={handleClosePopup}></div>
+            <div className="popup">
+                <p>Gift Content</p>
+                <button onClick={handleClosePopup}>Close</button>
+            </div>
+
+            </>
+        )}
         </div>
     </>
      );
