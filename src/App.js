@@ -38,9 +38,7 @@ let todoItems =
   return (
     <>
       <div className="index-background">
-
-        <Santa />
-        
+          <Santa />
         <div className="logo-background">
           <Logo />
           </div>

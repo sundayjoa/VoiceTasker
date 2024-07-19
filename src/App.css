@@ -1,3 +1,20 @@
+/*폰트*/
+@font-face {
+  font-family: 'Ownglyph_UNZ-Rg';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2406-1@1.0/Ownglyph_UNZ-Rg.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: 'Ownglyph_UNZ-Rg';
+}
+
+::placeholder {
+  font-family: 'Ownglyph_UNZ-Rg';
+  font-size: 25px;
+}
+
 .center {
   text-align: center;
 }
@@ -11,7 +28,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 30vh;
+  height: 10vh;
   color: white;
 }
 
@@ -46,12 +63,60 @@
 }
 
 /*산타 클로스*/
+/*왼쪽에서 오른쪽으로 이동하는 애니메이션*/
+@keyframes moveLeftToRight {
+  0% { transform: translate(-20vw, 10vh) rotateY(180deg); }
+  100% { transform: translate(100vw, 10vh) rotateY(180deg); }
+}
+
+@keyframes moveRightToLeft {
+  0% { transform: translate(100vw, 10vh) rotateY(0); }
+  100% { transform: translate(-20vw, 10vh) rotateY(0); }
+}
+
+@keyframes giftFall {
+  0% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(calc(100vh - 20px)); }
+}
+
+.santa-container{
+  position: relative;
+  width: 100%;
+  height: 25vh;
+  overflow: hidden;
+}
+
+.gift-container{
+  overflow: hidden;
+}
+
 .santaImage{
   width: 100px;
   height: auto;
+  position: absolute;
+  left: 0 !important;
+  animation-duration: 8s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
 }
 
-/*왼쪽에서 오른쪽으로 이동하는 애니메이션*/
+.moveRightToLeft {
+  animation-name: moveRightToLeft;
+}
+
+.moveLeftToRight {
+  animation-name: moveLeftToRight;
+}
+
+.falling-gift {
+  position: absolute;
+  width: 50px; 
+  height: 50px; 
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
+  cursor: pointer;
+}
+
 
 
 /*로고*/
@@ -66,7 +131,6 @@
 
 .spin {
   font-size: 120px !important;
-  cursor: pointer;
   animation: logo-spin 10s linear infinite;
 }
 

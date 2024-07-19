@@ -15,9 +15,9 @@ const Todo = (props) => {
     return(
         <ListItem>
             <Checkbox checked={item.done} />
-            <ListItemText>
+            <ListItemText className="todo-list">
                 <InputBase
-                    inputProps={{ "aria-label": "naked"}}
+                    inputProps={{ "aria-label": "naked", style: { fontFamily: 'Ownglyph_UNZ-Rg', fontSize: '27px' }}}
                     type="text"
                     id={item.id}
                     name={item.id}
