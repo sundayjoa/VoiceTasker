@@ -2,30 +2,34 @@ import './App.css';
 import Todo from './Todo';
 import AddTodo from './AddTodo';
 import Snowfall from './Snowfall';
+import Santa from './Santa';
 import Logo from './Logo';
 import React, {useState} from "react";
 import {Container, List, Paper} from "@mui/material";
 
 function App() {
-  const [items, setItems] = useState([
-    {
-      id: "0",
-      title: "Hello World 1",
-      done: true,
-    },
-    {
-      id:"1",
-      title: "Hello World 2",
-      done: true,
-    },
-]);
+  const [items, setItems] = useState([]);
+
+  //리스트 추가
+  const addItem = (item) => {
+    item.id = "ID-" + items.length;
+    item.done = false;
+    setItems([...items, item]);
+    console.log("items: ", items);
+  };
+
+  //리스트 삭제
+  const deleteItem = (item) => {
+    const newItems = items.filter(e => e.id != item.id);
+    setItems([...newItems]);
+  }
 
 let todoItems =
   items.length > 0 && (
     <Paper style={{margin: 15}}>
       <List>
         {items.map((item) =>(
-          <Todo item={item} key={item.id} />
+          <Todo item={item} key={item.id} deleteItem = {deleteItem} />
         ))}
       </List>
     </Paper>
@@ -34,13 +38,16 @@ let todoItems =
   return (
     <>
       <div className="index-background">
-      <div className="logo-background">
+
+        <Santa />
+        
+        <div className="logo-background">
           <Logo />
           </div>
         <div className="background">
         <Snowfall />
         <Container maxWidth="md">
-          <AddTodo />
+          <AddTodo addItem = {addItem} />
           <div>{todoItems}</div>
         </Container>
       </div>

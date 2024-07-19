@@ -13,15 +13,16 @@ const Logo = () => {
         setLogoTitle(true);
     };
 
-    const handleClick = () => {
-        setLogoTitle(false);
-    }
+    const handleMouseLeave = () => {
+        setLogoTitle(false)
+    };
+
 
     return(
         <div
             className = "logo-container"
             onMouseEnter = {handleMouseEnter}
-            onClick = {handleClick}
+            onMouseLeave = {handleMouseLeave}
         >
         <Box sx={{marginTop: 30}}>
             <AcUnitIcon className={`spin ${LogoTitle ? 'logo' : ''}`} />

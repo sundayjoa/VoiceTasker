@@ -45,6 +45,14 @@
   pointer-events: none;
 }
 
+/*산타 클로스*/
+.santaImage{
+  width: 100px;
+  height: auto;
+}
+
+/*왼쪽에서 오른쪽으로 이동하는 애니메이션*/
+
 
 /*로고*/
 @keyframes logo-spin {
@@ -78,3 +86,16 @@
 .logo-container:hover, .logo-title {
   opacity: 1;
 }
+
+/*음성 녹음*/
+.voiceIcon {
+  font-size: 50px !important;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.voiceIcon:hover {
+  background-color: rgb(148, 166, 189);
+}
+
+/*todoList*/
