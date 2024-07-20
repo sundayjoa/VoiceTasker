@@ -8,6 +8,7 @@ const Santa = () => {
     const [fallingGifts, setFallingGifts] = useState([]);
     const [selectedGift, setSelectedGift] = useState(null);
 
+    //산타 애니메이션
     useEffect(() => {
         const interval = setInterval(() => {
             setDirection(prevDirection => (prevDirection === 'rightToLeft' ? 'leftToRigth' : 'rightToLeft'));
@@ -44,7 +45,7 @@ const Santa = () => {
     };
 
     const handleClosePopup = () => {
-        setSelectedGift(null);
+        setSelectedGift(false);
     };
     
 
@@ -76,12 +77,17 @@ const Santa = () => {
             onClick = {() => handleGiftClick(gift)}
           />
         ))}
+
         {selectedGift &&(
             <>
             <div className="popup-overlay" onClick={handleClosePopup}></div>
             <div className="popup">
-                <p>Gift Content</p>
-                <button onClick={handleClosePopup}>Close</button>
+                <div className="fortune-title">
+                  <p>오늘의 운세</p>
+                </div>
+                <div className="fortune-content">
+                  <p>하고자 하는 일이 뜻대로 되지 않으니 마음이 초조해질 수 있습니다. 마음을 다스리고, 꾸준히 하고자 하는 일에 정진하세요.</p>
+                </div>
             </div>
 
             </>
