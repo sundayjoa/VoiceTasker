@@ -203,6 +203,21 @@ body {
   z-index: 999;
 }
 
+.ClosePopup{
+  position: absolute;
+  font-size: 25px;
+  background-color: transparent;
+  color: red;
+  cursor: pointer;
+  border-color: transparent;
+  top: 50px;
+  right: 200px;
+}
+
+.ClosePopup:hover {
+  background-color: gray;
+}
+
 .fortune-title {
   position: absolute;
   top: 0;

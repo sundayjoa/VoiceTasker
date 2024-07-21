@@ -80,7 +80,9 @@ const Santa = () => {
 
         {selectedGift &&(
             <>
-            <div className="popup-overlay" onClick={handleClosePopup}></div>
+            <div className="popup-overlay" onClick={handleClosePopup}>
+                <button className = "ClosePopup">x</button>
+            </div>
             <div className="popup">
                 <div className="fortune-title">
                   <p>오늘의 운세</p>
