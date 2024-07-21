@@ -52,6 +52,7 @@ const AddTodo = (props) =>{
         recognition.onresult = (event) => {
             const transcript = event.results[0][0].transcript;
             setItem({title: transcript})
+            setIsRecognizing(false);
         };
 
         recognition.onerror = (event) => {
@@ -85,7 +86,7 @@ const AddTodo = (props) =>{
         <Dialog open = {isRecognizing}>
             <DialogTitle>음성 인식 중...</DialogTitle>
             <DialogContent>
-                <p>음성 인식이 진행 중입니다.</p>
+                <p className = "recogMessage">음성 인식이 진행 중입니다.</p>
             </DialogContent>
 
         </Dialog>

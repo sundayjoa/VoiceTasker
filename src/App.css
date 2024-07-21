@@ -162,6 +162,12 @@ body {
   background-color: rgb(148, 166, 189);
 }
 
+.recogMessage {
+  font-size: 25px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
 /*오늘의 운세 팝업창*/
 .popup {
   position: fixed;
