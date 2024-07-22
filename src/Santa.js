@@ -1,14 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import SantaImage from './images/santa-claus.png';
 import fallingGift from './images/gift.png';
-import axios from 'axios';
 import './App.css'
 
 const Santa = () => {
     const [direction, setDirection] = useState('rightToLeft');
     const [fallingGifts, setFallingGifts] = useState([]);
     const [selectedGift, setSelectedGift] = useState(null);
-    const [fortune, setFortune] = useState('');
 
     //산타 애니메이션
     useEffect(() => {
@@ -49,21 +47,6 @@ const Santa = () => {
     const handleClosePopup = () => {
         setSelectedGift(false);
     };
-
-    //open api를 이용해 운세 가져오기
-    useEffect(() => {
-      const fetchFortune = async () => {
-        try{
-          const response = await axios.get('https://quotes.rest/qod?language=en');
-          const fortuneText = response.data.contents.quotes[0].quote;
-          setFortune(fortuneText);
-        } catch(error) {
-          console.error('Error fetching the fortune:', error);
-        }
-      };
-
-      fetchFortune();
-    }, []);
     
 
 
@@ -98,14 +81,14 @@ const Santa = () => {
         {selectedGift &&(
             <>
             <div className="popup-overlay" onClick={handleClosePopup}>
-                <button className = "ClosePopup">x</button>
+                <button className="ClosePopup" onClick={handleClosePopup}>x</button>
             </div>
             <div className="popup">
                 <div className="fortune-title">
                   <p>오늘의 운세</p>
                 </div>
                 <div className="fortune-content">
-                  <p>{fortune}</p>
+                  <p>하고자 하는 일이 뜻대로 되지 않으니 마음이 초조해질 수 있습니다. 마음을 다스리고, 꾸준히 하고자 하는 일에 정진하세요.</p>
                 </div>
             </div>
 
