@@ -42,6 +42,11 @@ body {
   color: white;
 }
 
+.add-icon {
+  position: relative; 
+  z-index: 1 !important; 
+}
+
 /*마우스 이동 이벤트*/
 .snowfall {
   position: fixed;

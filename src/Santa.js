@@ -1,12 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import SantaImage from './images/santa-claus.png';
 import fallingGift from './images/gift.png';
+import fortunes from './fortunes.json';
 import './App.css'
 
 const Santa = () => {
     const [direction, setDirection] = useState('rightToLeft');
     const [fallingGifts, setFallingGifts] = useState([]);
     const [selectedGift, setSelectedGift] = useState(null);
+    const [fortune, setFortune] = useState('');
 
     //산타 애니메이션
     useEffect(() => {
@@ -47,6 +49,23 @@ const Santa = () => {
     const handleClosePopup = () => {
         setSelectedGift(false);
     };
+
+    //운세 랜덤으로 띄우기
+    useEffect(() => {
+      const fetchFortune = () => {
+        try {
+          const randomId = Math.floor(Math.random() * 25) + 1;
+          const fortuneData = fortunes.find(f => f.id === randomId);
+          if (fortuneData) {
+            setFortune(fortuneData.message);
+          }
+        } catch (error) {
+          console.error('Error fetching the fortune:', error);
+        }
+      };
+  
+      fetchFortune();
+    }, []);
     
 
 
@@ -88,7 +107,7 @@ const Santa = () => {
                   <p>오늘의 운세</p>
                 </div>
                 <div className="fortune-content">
-                  <p>하고자 하는 일이 뜻대로 되지 않으니 마음이 초조해질 수 있습니다. 마음을 다스리고, 꾸준히 하고자 하는 일에 정진하세요.</p>
+                  <p>{fortune}</p>
                 </div>
             </div>
 

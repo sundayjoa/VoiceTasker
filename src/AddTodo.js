@@ -77,7 +77,7 @@ const AddTodo = (props) =>{
                 onChange = {onInputChange} onKeyPress = {enterKeyEventHandler} value = {item.title} />
             </Grid>
             <Grid xs={1} md={1} item style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}>
-                <Fab color="primary" aria-label="add">
+                <Fab color="primary" aria-label="add" className="add-icon">
                     <AddIcon onClick={onButtonClick}/>
                 </Fab>
             </Grid>
