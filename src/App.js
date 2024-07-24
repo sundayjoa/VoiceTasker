@@ -4,8 +4,9 @@ import AddTodo from './AddTodo';
 import Snowfall from './Snowfall';
 import Santa from './Santa';
 import Logo from './Logo';
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Container, List, Paper} from "@mui/material";
+import { call } from "./ApiService";
 
 function App() {
   const [items, setItems] = useState([]);
@@ -28,6 +29,12 @@ function App() {
   const editItem = () => {
     setItems([...items]);
   };
+
+  //Api 콜
+  useEffect(() => {
+    call("/todo", "GET", null)
+    .then((response) => setItems(response.data));
+  }, []);
 
 let todoItems =
   items.length > 0 && (

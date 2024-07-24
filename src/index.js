@@ -1,9 +1,9 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import {createRoot} from 'react-dom/client';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Icon from './images/ac_unit_icon.png';
+import AppRouter from './AppRouter';
 
 
 document.title = "Do It!";
@@ -23,11 +23,9 @@ const changeFavicon = (link) => {
 // 새로운 파비콘 경로 설정
 changeFavicon(Icon);
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+const container = document.getElementById('root');
+const root = createRoot(container);
+
+root.render(<AppRouter tab = "home" />);
 
 reportWebVitals();
