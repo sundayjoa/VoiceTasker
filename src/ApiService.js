@@ -28,8 +28,7 @@ export function call(api, method, request){
             new Error(response.statusText);
         }
     }).catch((error) => {
-        console.log("http error");
-        console.log("error");
+        console.error("HTTP error:", error);
     });
 }
 

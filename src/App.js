@@ -28,12 +28,25 @@ function App() {
   };
 
   //Api 콜
-useEffect(() => {
-  call("/todo", "GET", null).then((response) => {
-    setItems(response.data);
-    setLoading(false);
-  });
-}, []);
+  useEffect(() => {
+    call("/todo", "GET", null)
+      .then((response) => {
+        if (response && response.data) {
+          setItems(response.data);
+        } else {
+          console.error("Invalid response:", response);
+        }
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+        setLoading(false);
+      });
+  }, []);
+
+if (loading) {
+  return <h1 className="center index-background logo-background">로딩중...</h1>;
+}
 
 
 let todoItems =
