@@ -42,6 +42,19 @@ body {
   color: white;
 }
 
+/*네비게이션*/
+.navigation{
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.logoutBtn{
+  font-size: 30px !important;
+  font-family: 'Ownglyph_UNZ-Rg' !important;
+  margin-top: 15px !important;
+  margin-right: 15px !important;
+}
+
 .add-icon {
   position: relative; 
   z-index: 1 !important; 

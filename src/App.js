@@ -5,36 +5,36 @@ import Snowfall from './Snowfall';
 import Santa from './Santa';
 import Logo from './Logo';
 import React, {useEffect, useState} from "react";
-import {Container, List, Paper} from "@mui/material";
-import { call } from "./ApiService";
+import {AppBar, Container, Grid, List, Paper, Toolbar, Button} from "@mui/material";
+import { call, signout } from "./ApiService";
 
 function App() {
   const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   //리스트 추가
   const addItem = (item) => {
-    item.id = "ID-" + items.length;
-    item.done = false;
-    setItems([...items, item]);
-    console.log("items: ", items);
+    call("/todo", "POST", item).then((response) => setItems(response.data));
   };
 
   //리스트 삭제
   const deleteItem = (item) => {
-    const newItems = items.filter(e => e.id != item.id);
-    setItems([...newItems]);
+    call("/todo", "DELETE", item).then((response) => setItems(response.data));
   }
 
   //리스트 수정
-  const editItem = () => {
-    setItems([...items]);
+  const editItem = (item) => {
+    call("/todo", "PUT", item).then((response) => setItems(response.data));
   };
 
   //Api 콜
-  useEffect(() => {
-    call("/todo", "GET", null)
-    .then((response) => setItems(response.data));
-  }, []);
+useEffect(() => {
+  call("/todo", "GET", null).then((response) => {
+    setItems(response.data);
+    setLoading(false);
+  });
+}, []);
+
 
 let todoItems =
   items.length > 0 && (
@@ -47,9 +47,27 @@ let todoItems =
     </Paper>
   );
 
+  //네비게이션 바
+  let navigationBar = (
+    <AppBar position = "static" className="navigation" >
+      <Toolbar>
+        <Grid justifyContent="space-between" container>
+          <Grid item>
+          </Grid>
+          <Grid item>
+            <Button className="logoutBtn" color="inherit" raised onClick={signout}>
+              로그아웃
+            </Button>
+          </Grid>
+        </Grid>
+      </Toolbar>
+    </AppBar>
+  );
+
   return (
     <>
       <div className="index-background">
+        {navigationBar}
           <Santa />
         <div className="logo-background">
           <Logo />
