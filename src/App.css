@@ -258,3 +258,12 @@ body {
   margin-top: 120px;
   box-sizing: border-box;
 }
+
+/*로그인 및 회원가입*/
+.goSignUp{
+  font-size: 20px;
+}
+
+.goSignIn{
+  font-size: 20px;
+}
